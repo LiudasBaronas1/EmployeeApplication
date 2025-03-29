@@ -1,7 +1,9 @@
 package com.employee.EmployeeApplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,16 +15,18 @@ public class Project {
     private String name;
     private String clientName;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "projects")
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<Employee>();
 
-    public Project(String clientName, String name) {
+    public Project(String name, String clientName) {
         this.clientName = clientName;
         this.name = name;
+        this.employees = new ArrayList<>();
     }
 
     public Project() {
-
+        this.employees = new ArrayList<>();
     }
 
 
@@ -57,4 +61,6 @@ public class Project {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
+
 }

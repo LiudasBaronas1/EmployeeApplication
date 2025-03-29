@@ -11,12 +11,12 @@ public class Spouse {
     private int id;
     private String name;
     private String mobileNo;
-    private String age;
+    private int age;
 
     @OneToOne(mappedBy = "spouse")
     private Employee employee;
 
-    public Spouse(String name, String mobileNo, String age) {
+    public Spouse(String name, String mobileNo, int age) {
         this.name = name;
         this.mobileNo = mobileNo;
         this.age = age;
@@ -42,11 +42,11 @@ public class Spouse {
         this.mobileNo = mobileNo;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
